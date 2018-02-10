@@ -59,7 +59,7 @@ class BeaconEmitter extends Component {
     this.beaconsDidRange = DeviceEventEmitter.addListener(
       'beaconsDidRange',
       (data) => {
-        //console.log("@beacon emitter", data);
+        console.log("@beacon emitter", data);
         boundActionCreator(infrastructure_types.SET_BEACONS, {beacons: data.beacons});
         this.setState({
           dataSource: this.state.dataSource.cloneWithRows(data.beacons)

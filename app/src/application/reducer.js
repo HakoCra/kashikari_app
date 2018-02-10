@@ -1,30 +1,10 @@
 import initial_state from './initialState';
 import * as types from './types';
-import deepAssign from 'deep-assign';
+import assignDeep from 'assign-deep';
 
 const reducers = {
-  [types.SET_VIEW_STATE](old_state, action){
-    let state = deepAssign({}, old_state);
-    state.view_state = action.view_state;
-    return state;
-  },
-  [types.ADD_TUTOREAL](old_state, action){
-    let state = deepAssign({}, old_state);
-    state.tutoreals.push(action.tutoreal);
-    return state;
-  },
-  [types.SET_ACTIVE_TUTOREAL_INDEX](old_state, action){
-    let state = deepAssign({}, old_state);
-    state.active_titoreal_index = action.index;
-    return state;
-  },
-  [types.SET_ACTIVE_SKILL_INDEX](old_state, action){
-    let state = deepAssign({}, old_state);
-    state.active_skill_index = action.index;
-    return state;
-  },
   [types.SET_ACTIVE_TASK_INDEX](old_state, action){
-    let state = deepAssign({}, old_state);
+    let state = assignDeep({}, old_state);
     state.active_task_index = action.index;
     return state;
   },

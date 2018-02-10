@@ -30,6 +30,7 @@
     "react-native-bluetooth-state": "^2.0.0"
   },
   "devDependencies": {
+    "assign-deep": "^0.4.7",
     "babel-eslint": "^7.1.1",
     "babel-jest": "19.0.0",
     "babel-preset-react-native": "1.9.1",

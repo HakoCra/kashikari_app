@@ -1,10 +1,10 @@
 import initial_state from './initialState';
 import * as types from './types';
-import deepAssign from 'deep-assign';
+import assignDeep from 'assign-deep';
 
 const reducers = {
   [types.SET_BEACON](old_state, action){
-    let state = deepAssign({}, old_state);
+    let state = assignDeep({}, old_state);
     const current_beacon = state.beacons.find(x => x.major === action.beacon.major &&  x.minor === action.beacon.minor);
     if(current_beacon === undefined){
       state.beacons = [...state.beacons, action.beacon];
@@ -14,13 +14,8 @@ const reducers = {
     return state;
   },
   [types.SET_BEACONS](old_state, action){
-    let state = deepAssign({}, old_state);
+    let state = assignDeep({}, old_state);
     for(let beacon of action.beacons)state = reducers[types.SET_BEACON](state, {beacon});
-    return state;
-  },
-  [types.ADD_TUTOREAL](old_state, action){
-    let state = deepAssign({}, old_state);
-    state.tutoreals.push(action.tutoreal);
     return state;
   },
 };

@@ -2,8 +2,10 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { StyleSheet, Text, View, Button, DeviceEventEmitter } from 'react-native';
 import boundActionCreator from './boundActionCreator';
+
 import * as types from '../application/types';
-import BeaconEmitter from '../infrastructure/BeaconEmitter';
+
+import LoginView from './LoginView/index';
 
 import BeaconBroadcast from 'react-native-ibeacon-simulator';
 
@@ -15,6 +17,9 @@ const minor = 3;
 BeaconBroadcast.stopAdvertisingBeacon();
 BeaconBroadcast.startAdvertisingBeaconWithString(uuid, identifier, major, minor);
 
+import BeaconEmitter from '../infrastructure/BeaconEmitter';
+BeaconEmitter();
+
 class Root extends React.Component {
   render() {
     const state = this.props.state;
@@ -22,7 +27,7 @@ class Root extends React.Component {
     // console.log(this.props.state.application.view_state);
     return (
       <View style={styles.root}>
-        <BeaconEmitter />
+        <LoginView />
         <Text>{JSON.stringify(state.infrastructure.beacons)}</Text>
       </View>
     );

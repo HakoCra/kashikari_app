@@ -7,18 +7,9 @@ import * as types from '../application/types';
 
 import LoginView from './LoginView/index';
 
-import BeaconBroadcast from 'react-native-ibeacon-simulator';
-
-const uuid = '79742E5E-BEDC-4F1E-9976-451A90E7B0D0';
-const identifier = 'uehara1414';
-const major = 1;
-const minor = 3;
-
-BeaconBroadcast.stopAdvertisingBeacon();
-BeaconBroadcast.startAdvertisingBeaconWithString(uuid, identifier, major, minor);
-
 import BeaconEmitter from '../infrastructure/BeaconEmitter';
-BeaconEmitter();
+BeaconEmitter.initEmitter();
+BeaconEmitter.setBroadcast(12,45);
 
 class Root extends React.Component {
   render() {

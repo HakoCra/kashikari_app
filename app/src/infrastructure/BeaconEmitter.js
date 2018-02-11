@@ -11,7 +11,6 @@ const uuid = 'AC4F29C3-FFCE-4F9B-8FB5-10D342F18D7A';
 const identifier = 'uehara1414';
 
 const setBroadcast = (major, minor) => {
-  console.log(major, minor);
   BeaconBroadcast.stopAdvertisingBeacon();
   BeaconBroadcast.startAdvertisingBeaconWithString(uuid, identifier, major, minor);
 };

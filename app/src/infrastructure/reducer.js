@@ -18,6 +18,16 @@ const reducers = {
     for(let beacon of action.beacons)state = reducers[types.SET_BEACON](state, {beacon});
     return state;
   },
+  [types.SET_LOGIN_AVAILABLE](old_state, action){
+    let state = assignDeep({}, old_state);
+    state.login_available = action.available
+    return state;
+  },
+  [types.SET_LOGIN_FAILED](old_state, action){
+    let state = assignDeep({}, old_state);
+    state.login_failed = action.failed
+    return state;
+  },
 };
 
 const reducer = (state = initial_state, action) => {

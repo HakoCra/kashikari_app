@@ -42,6 +42,7 @@
     "npm-run-all": "^4.1.1",
     "react-native-ibeacon-simulator": "^1.0.10",
     "react-native-router-flux": "^4.0.0-beta.22",
+    "react-native-storage": "^0.2.2",
     "react-redux": "^5.0.6",
     "react-test-renderer": "~15.4.0",
     "redux": "^3.7.2"

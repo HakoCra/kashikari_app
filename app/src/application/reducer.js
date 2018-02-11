@@ -3,9 +3,9 @@ import * as types from './types';
 import assignDeep from 'assign-deep';
 
 const reducers = {
-  [types.SET_ACTIVE_TASK_INDEX](old_state, action){
+  [types.SET_USER](old_state, action){
     let state = assignDeep({}, old_state);
-    state.active_task_index = action.index;
+    state.user = assignDeep({}, state.user, action.user);
     return state;
   },
 };

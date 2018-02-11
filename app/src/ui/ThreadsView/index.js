@@ -1,8 +1,9 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { StyleSheet, Text, View, TouchableOpacity, ScrollView, Image } from 'react-native';
+import { StyleSheet, Text, View, TouchableOpacity, ScrollView, Image, Alert } from 'react-native';
 import boundActionCreator from '../boundActionCreator';
-import * as types from '../../application/types';
+import * as app_types from '../../application/types';
+import * as infra_types from '../../infrastructure/types';
 
 class ThreadCard extends React.Component {
   render() {
@@ -24,13 +25,34 @@ class ThreadCard extends React.Component {
 }
 
 class ThreadsView extends React.Component {
+  confirm(callback){
+    Alert.alert(
+      "このリクエストを削除します",
+      "よろしいですか？",
+      [
+        {
+          text: "いいえ",
+          onPress: () => null,
+          style: "cancel"
+        },
+        {
+          text: "はい",
+          onPress: callback
+        },
+      ],
+      {
+        cancelable: false
+      }
+    );
+  }
   render() {
     const state = this.props.state;
-    console.log(state);
-    const thread_cards = state.application.messages.map(x => 
+    const request = state.application.requests.find(x => x.id === state.application.active_request_id);
+    const thread_cards = request.accepted_users.map(x => 
       <ThreadCard
-        username="uehara1414"
-        text="こんにちは" />
+        username={x.username}
+        text={x.latest_message !== undefined ? x.latest_message.text : 'メッセージはありません'}
+        key={x.id} />
     );
 
     return (
@@ -40,7 +62,10 @@ class ThreadsView extends React.Component {
           {thread_cards.length === 0 ? <Text style={styles.text}>まだ助っ人がいません</Text> : null}
 
           <TouchableOpacity
-            onPress={() => alert("pressed")}
+            onPress={() => this.confirm(() => {
+              boundActionCreator(app_types.NAVIGATOR_POP);
+              boundActionCreator(infra_types.DELETE_REQUEST, {request_id: request.id});
+            })}
             style={styles.delete_button}>
             <Text style={styles.delete_button__text}>このリクエストを削除</Text>
           </TouchableOpacity>
@@ -97,7 +122,8 @@ const styles = StyleSheet.create({
     textAlign: "center"
   },
   text: {
-    marginTop: 30,
+    color: "#aaa",
+    marginTop: 50,
     textAlign: "center",
   }
 });

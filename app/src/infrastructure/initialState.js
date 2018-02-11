@@ -4,7 +4,6 @@ const initial_state = {
   login_available: false,
   logging_in: false,
   login_failed: false,
-  requests: []
 };
 
 export default initial_state;

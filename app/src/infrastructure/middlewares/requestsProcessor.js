@@ -50,6 +50,10 @@ const fetchMessages = (user, state) => {
     .then(res => {
       if(res.error !== 'Authorization error'){
 
+        boundActionCreator(app_types.SET_REQUESTS, {
+          messages: messages
+        });
+
       }else{
         boundActionCreator(infra_types.SET_LOGIN_AVAILABLE, {available: false});
         boundActionCreator(infra_types.SET_LOGIN_FAILED, {failed: true});

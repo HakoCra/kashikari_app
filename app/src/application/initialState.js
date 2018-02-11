@@ -6,7 +6,8 @@ const initial_state = {
     major: null,
     minor: null
   },
-  messages: []
+  messages: [],
+  requests: [],
 };
 
 export default initial_state;

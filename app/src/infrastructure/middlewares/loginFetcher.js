@@ -3,7 +3,7 @@ import * as app_types from '../../application/types';
 import * as infra_types from '../../infrastructure/types';
 
 const login = (user, state) => {
-  if(user.username === undefined || user.password === undefined)return;
+  if(user.username === '' || user.password === '')return;
   boundActionCreator(infra_types.SET_LOGIN_FAILED, {failed: false});
   boundActionCreator(infra_types.SET_LOGGING_IN, {logging_in: true});
 

@@ -29,6 +29,7 @@ const login = (user, state) => {
             minor: res.beacon.minor
           }
         });
+        boundActionCreator(infra_types.FETCH_CLOCK, {});
       }else{
         boundActionCreator(infra_types.SET_LOGIN_AVAILABLE, {available: false});
         boundActionCreator(infra_types.SET_LOGIN_FAILED, {failed: true});

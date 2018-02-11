@@ -15,7 +15,6 @@ const fetchRequests = (user, state) => {
   })
     .then(res => res.json())
     .then(res => {
-
       if(res.error !== 'Authorization error'){
         const requests = res.map((val) => {
           return {
@@ -36,9 +35,35 @@ const fetchRequests = (user, state) => {
     });
 };
 
-const requestsFetcher = store => next => action => {
-  if(action.type === app_types.SET_USER)fetchRequests(action.user, store.getState());
+const fetchMessages = (user, state) => {
+  const token = state.application.user.token;
+  const api_server = state.infrastructure.api_server;
+  fetch(`${api_server}/messages`, {
+    method: 'GET',
+    headers: {
+      'Accept': 'application/json',
+      'Content-Type': 'application/json',
+      'Authorization': token,
+    },
+  })
+    .then(res => res.json())
+    .then(res => {
+      if(res.error !== 'Authorization error'){
+
+      }else{
+        boundActionCreator(infra_types.SET_LOGIN_AVAILABLE, {available: false});
+        boundActionCreator(infra_types.SET_LOGIN_FAILED, {failed: true});
+      }
+    });
+};
+
+const requestsProcessor = store => next => action => {
+  if(action.type === infra_types.FETCH_CLOCK)
+  {
+    fetchRequests(action.user, store.getState());
+    fetchMessages(action.user, store.getState());
+  }
   next(action);
 };
 
-export default requestsFetcher;
+export default requestsProcessor;

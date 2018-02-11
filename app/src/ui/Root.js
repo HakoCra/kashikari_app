@@ -28,19 +28,19 @@ class Root extends React.Component {
         <Navigator>
           <RequestBoard
             id='RequestBoard'
-            title='リクエスト一覧' />
+            getTitle={() => 'リクエスト一覧'} />
           <ThreadsView
             id='ThreadsView'
-            title='助っ人一覧' />
+            getTitle={state => '助っ人一覧'} />
           <ConfirmRequestView
             id='ConfirmRequestView'
-            title='' />
+            getTitle={() => ''} />
           <ChatView
             id='ChatView'
-            title='' />
+            getTitle={() => ''} />
           <AddRequestView
             id='AddRequestView'
-            title='リクエストを追加' />
+            getTitle={() => 'リクエストを作成'} />
         </Navigator>
         <LoginView />
       </View>

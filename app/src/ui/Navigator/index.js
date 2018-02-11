@@ -17,8 +17,7 @@ class Navigator extends React.Component {
     const state = this.props.state;
     const scine_id = state.application.navigator_stack[state.application.navigator_stack.length - 1];
     const scine = this.props.children.find(x => x.props.id === scine_id);
-    console.log(scine.props);
-    
+    console.log(scine);
 
     return (
       <View style={styles.root}>
@@ -37,7 +36,7 @@ class Navigator extends React.Component {
                 style={styles.back_button} />
             </TouchableOpacity>
           : null}
-          <Text style={styles.header_title}>{scine.props.title}</Text>
+          <Text style={styles.header_title}>{scine.props.getTitle(state)}</Text>
         </View>
       </View>
     );

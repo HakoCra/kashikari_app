@@ -22,8 +22,6 @@ const login = (user, state) => {
       
       if(res.error !== 'Authorization error'){
         boundActionCreator(infra_types.SET_LOGIN_AVAILABLE, {available: true});
-        console.log(res);
-        
         boundActionCreator(app_types.SET_USER, {
           user:{
             token: res.access_token,

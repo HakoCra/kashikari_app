@@ -17,9 +17,9 @@ class LoginView extends React.Component {
     const state = this.props.state;
 
     return (
-      !state.infrastructure.login_available ? 
+      !state.infrastructure.login_available ?
         <View style={styles.root}>
-          <Text style={styles.label}>user name</Text>
+          <Text style={styles.label}>ユーザー名</Text>
           <View style={styles.input_container}>
             <TextInput
               style={styles.text_input}
@@ -28,7 +28,7 @@ class LoginView extends React.Component {
             />
           </View>
 
-          <Text style={styles.label}>password</Text>
+          <Text style={styles.label}>パスワード</Text>
           <View style={styles.input_container}>
             <TextInput
               style={styles.text_input}
@@ -38,8 +38,8 @@ class LoginView extends React.Component {
             />
           </View>
 
-          {state.infrastructure.logging_in ? <Text style={[styles.text]}>ログイン中です…</Text> : null}
-          {state.infrastructure.login_failed ? <Text style={[styles.text, styles.error]}>パスワードが違います</Text> : null}
+          {state.infrastructure.logging_in ? <Text style={styles.text}>ログイン中です…</Text> : null}
+          {state.infrastructure.login_failed ? <Text style={styles.text}>パスワードが違います</Text> : null}
 
           <TouchableOpacity
             onPress={() => boundActionCreator(types.SET_USER, {
@@ -63,9 +63,14 @@ export default connect(state => ({state}))(LoginView);
 const styles = StyleSheet.create({
   root: {
     flex: 1,
+    position: "absolute",
+    top: 0,
+    bottom: 0,
+    left: 0,
+    right: 0,
     paddingLeft: 30,
     paddingRight: 30,
-    backgroundColor: '#ff8c00'
+    backgroundColor: '#ff562f'
   },
   label: {
     marginTop: 70,
@@ -88,9 +93,6 @@ const styles = StyleSheet.create({
     color: "#fff",
     textAlign: "center",
     fontSize: 15
-  },
-  error:{
-    color: "#f00",
   },
   button: {
     color: "#fff",

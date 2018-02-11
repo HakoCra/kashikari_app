@@ -11,8 +11,6 @@ const reducers = {
   },
   [types.SET_USER](old_state, action){
     let state = assignDeep({}, old_state);
-    console.log("!!", action.user);
-    
     state.user = assignDeep({}, state.user, action.user);
 
     if(action.user.major !== undefined && action.user.minor !== undefined){

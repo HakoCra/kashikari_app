@@ -21,7 +21,11 @@
   ],
   "scripts": {
     "start": "react-native run-ios",
-    "test": "jest"
+    "test": "jest",
+    "postinstall": "npm-run-all RNLink:*",
+    "RNLink:beacons-manager": "react-native link react-native-beacons-manager",
+    "RNLink:bluetooth-state": "react-native link react-native-bluetooth-state",
+    "RNLink:ibeacon-simulator": "react-native link react-native-ibeacon-simulator"
   },
   "dependencies": {
     "react": "~15.4.0",
@@ -39,7 +43,7 @@
     "eslint-plugin-react": "^6.10.0",
     "eslint-plugin-react-native": "^2.2.1",
     "jest": "19.0.0",
-    "npm-run-all": "^4.1.1",
+    "npm-run-all": "^4.1.2",
     "react-native-ibeacon-simulator": "^1.0.10",
     "react-native-router-flux": "^4.0.0-beta.22",
     "react-native-storage": "^0.2.2",

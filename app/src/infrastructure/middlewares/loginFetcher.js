@@ -2,8 +2,6 @@ import boundActionCreator from '../../ui/boundActionCreator';
 import * as app_types from '../../application/types';
 import * as infra_types from '../../infrastructure/types';
 
-const beacon_num = 0;
-
 const login = (user, state) => {
   if(user.username === undefined || user.password === undefined)return;
 
@@ -40,6 +38,6 @@ const tutorealFetcher = store => next => action => {
   console.log("@middleware", store.getState());
   if(action.type === app_types.SET_USER)login(action.user, store.getState());
   next(action);
-}
+};
 
 export default tutorealFetcher;

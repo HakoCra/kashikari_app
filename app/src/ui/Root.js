@@ -4,6 +4,7 @@ import { StyleSheet, Text, View, Button, DeviceEventEmitter } from 'react-native
 import boundActionCreator from './boundActionCreator';
 
 import * as types from '../application/types';
+import {INIT_STORE} from '../store/index.js';
 
 import LoginView from './LoginView/index';
 
@@ -25,6 +26,8 @@ class Root extends React.Component {
   }
 }
 export default connect(state => ({state}))(Root);
+
+boundActionCreator(INIT_STORE);
 
 const styles = StyleSheet.create({
   root: {

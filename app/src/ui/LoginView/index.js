@@ -7,9 +7,9 @@ import * as types from '../../application/types';
 class LoginView extends React.Component {
   constructor(props){
     super(props);
-    console.log(this.props.state)
+    console.log("ligin view", this.props.state)
     this.state = {
-      user_name: this.props.state.application.user.user_name,
+      username: this.props.state.application.user.username,
       password: this.props.state.application.user.password
     };
   }
@@ -35,6 +35,7 @@ class LoginView extends React.Component {
               style={styles.text_input}
               onChangeText={(password) => this.setState({password})}
               value={this.state.password}
+              secureTextEntry={true}
             />
           </View>
 

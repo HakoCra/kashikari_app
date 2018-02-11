@@ -17,7 +17,7 @@ class RequestCard extends React.Component {
         <Text style={styles.request_card__text}>ユーザー : {this.props.user}</Text>
         <Text style={styles.request_card__text}>報酬 : {this.props.reward ===  null ? 'なし' : this.props.reward}</Text>
         <View style={styles.request_card__badge_container}>
-          <Text style={styles.request_card__badge}>{this.props.badge}</Text>
+          <Text style={[styles.request_card__badge, this.props.badge > 0 ? styles.request_card__badge_active : null]}>{this.props.badge}</Text>
           <Image
             source={require('../assets/request_card_icon.png')}
             resizeMode='contain'
@@ -72,11 +72,12 @@ const styles = StyleSheet.create({
     paddingRight: 30
   },
   request_cards: {
+    paddingTop: 30,
     overflow: "visible",
   },
   request_card: {
     padding: 20,
-    marginTop: 30,
+    marginBottom: 30,
     shadowOpacity: 0.2,
     shadowRadius: 3,
     shadowColor: '#000',
@@ -109,9 +110,12 @@ const styles = StyleSheet.create({
     marginRight: 10,
     width: 30,
     height: 30,
-    backgroundColor: "#ff562f",
+    backgroundColor: "#ddd",
     borderRadius: 15,
     overflow: "hidden",
+  },
+  request_card__badge_active: {
+    backgroundColor: "#ff562f",
   },
   request_card__icon:{
     height: 20,

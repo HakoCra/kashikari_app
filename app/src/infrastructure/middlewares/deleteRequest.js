@@ -12,15 +12,7 @@ const processDeleteRequest = (request_id, state) => {
       'Content-Type': 'application/json',
       'Authorization': token,
     },
-  })
-    .then(res => res.json())
-    .then(res => {
-      if(res.error !== 'Authorization error'){
-        console.log(res)
-      }else{
-        console.log(res)
-      }
-    });
+  });
 };
 
 const deleteRequest = store => next => action => {

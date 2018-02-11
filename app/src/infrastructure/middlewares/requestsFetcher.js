@@ -3,7 +3,6 @@ import * as app_types from '../../application/types';
 import * as infra_types from '../../infrastructure/types';
 
 const fetchRequests = (user, state) => {
-  console.log('u', user.username === undefined || user.password === undefined);
   const token = state.application.user.token;
   const api_server = state.infrastructure.api_server;
   fetch(`${api_server}/requests`, {
@@ -18,25 +17,18 @@ const fetchRequests = (user, state) => {
     .then(res => {
 
       if(res.error !== 'Authorization error'){
-        res.map((val) => {
-          return Object.assign({}, {
+        const requests = res.map((val) => {
+          return {
             id: val.id,
             title: val.title,
             timelimit: val.timelimit,
             reward: val.reward,
             comment: val.comment
-          })
-        })
-        /*
-        boundActionCreator(infra_types.SET_LOGIN_AVAILABLE, {available: true});
-        boundActionCreator(app_types.SET_USER, {
-          user:{
-            token: res.access_token,
-            major: res.beacon.major,
-            minor: res.beacon.minor
           }
+        })
+        boundActionCreator(app_types.SET_REQUESTS, {
+          requests: requests
         });
-        */
       }else{
         boundActionCreator(infra_types.SET_LOGIN_AVAILABLE, {available: false});
         boundActionCreator(infra_types.SET_LOGIN_FAILED, {failed: true});

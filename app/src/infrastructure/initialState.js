@@ -3,7 +3,8 @@ const initial_state = {
   beacons: [],
   login_available: false,
   logging_in: false,
-  login_failed: false
+  login_failed: false,
+  requests: []
 };
 
 export default initial_state;

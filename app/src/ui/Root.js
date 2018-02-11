@@ -43,6 +43,7 @@ class Root extends React.Component {
             title={'リクエスト一覧'} />
         </Navigator>
         <LoginView />
+        <Text>state.application.requests: {JSON.stringify(state.application.requests)}</Text>
       </View>
     );
   }

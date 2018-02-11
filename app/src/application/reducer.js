@@ -12,10 +12,11 @@ const reducers = {
   [types.SET_USER](old_state, action){
     let state = assignDeep({}, old_state);
     state.user = assignDeep({}, state.user, action.user);
-
-    if(action.user.major !== null && action.user.minor !== null){
-      BeaconEmitter.setBroadcast(action.user.major, action.user.minor);
-    }
+    return state;
+  },
+  [types.SET_REQUESTS](old_state, action){
+    let state = assignDeep({}, old_state);
+    state.requests = action.requests;
     return state;
   },
 };

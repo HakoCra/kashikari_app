@@ -33,6 +33,12 @@ const reducers = {
     state.login_failed = action.failed
     return state;
   },
+  [types.FETCH_REQUESTS](old_state, action){
+    console.log('FETCH_REQUESTS');
+    let state = assignDeep({}, old_state);
+    state.logging_in = action.logging_in;
+    return state;
+  },
 };
 
 const reducer = (state = initial_state, action) => {

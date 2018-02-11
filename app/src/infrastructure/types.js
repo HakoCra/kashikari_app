@@ -3,3 +3,6 @@ export const SET_BEACON = 'SET_BEACON';
 export const SET_LOGIN_AVAILABLE = 'SET_LOGIN_AVAILABLE';
 export const SET_LOGGING_IN = 'SET_LOGGING_IN';
 export const SET_LOGIN_FAILED = 'SET_LOGIN_FAILED';
+
+// リクエスト取得
+export const FETCH_REQUESTS = 'FETCH_REQUESTS';

@@ -10,13 +10,12 @@ import LoginView from './LoginView/index';
 
 import BeaconEmitter from '../infrastructure/BeaconEmitter';
 BeaconEmitter.initEmitter();
-BeaconEmitter.setBroadcast(12,45);
+//BeaconEmitter.setBroadcast(12,45);
 
 class Root extends React.Component {
   render() {
     const state = this.props.state;
 
-    // console.log(this.props.state.application.view_state);
     return (
       <View style={styles.root}>
         <LoginView />

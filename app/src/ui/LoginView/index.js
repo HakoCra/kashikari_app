@@ -7,7 +7,6 @@ import * as types from '../../application/types';
 class LoginView extends React.Component {
   constructor(props){
     super(props);
-    console.log("ligin view", this.props.state)
     this.state = {
       username: this.props.state.application.user.username,
       password: this.props.state.application.user.password

@@ -4,7 +4,6 @@ import * as infra_types from '../../infrastructure/types';
 
 const login = (user, state) => {
   if(user.username === undefined || user.password === undefined)return;
-
   boundActionCreator(infra_types.SET_LOGIN_FAILED, {failed: false});
   boundActionCreator(infra_types.SET_LOGGING_IN, {logging_in: true});
 
@@ -23,11 +22,13 @@ const login = (user, state) => {
       
       if(res.error !== 'Authorization error'){
         boundActionCreator(infra_types.SET_LOGIN_AVAILABLE, {available: true});
+        console.log(res);
+        
         boundActionCreator(app_types.SET_USER, {
           user:{
-            token: res.token,
-            major: res.major,
-            minor: res.minor
+            token: res.access_token,
+            major: res.beacon.major,
+            minor: res.beacon.minor
           }
         });
       }else{
@@ -38,7 +39,7 @@ const login = (user, state) => {
 };
 
 const tutorealFetcher = store => next => action => {
-  console.log("@middleware", store.getState());
+  //console.log("@middleware", store.getState());
   if(action.type === app_types.SET_USER)login(action.user, store.getState());
   next(action);
 };

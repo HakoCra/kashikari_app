@@ -19,10 +19,12 @@ const fetchRequests = (user, state) => {
         const requests = res.map((val) => {
           return {
             id: val.id,
+            username: val.user.username,
             title: val.title,
             timelimit: val.timelimit,
             reward: val.reward,
-            comment: val.comment
+            comment: val.comment,
+            accepted_users: val.accepted_users,
           }
         })
         boundActionCreator(app_types.SET_REQUESTS, {

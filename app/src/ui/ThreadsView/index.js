@@ -25,25 +25,24 @@ class ThreadCard extends React.Component {
 
 class ThreadsView extends React.Component {
   render() {
+    const state = this.props.state;
+    const thread_cards = state.application.messages.map(x => 
+      <ThreadCard
+        username="uehara1414"
+        text="こんにちは" />
+    );
+
     return (
       <View style={styles.root}>
         <ScrollView style={styles.thread_cards}>
-          <ThreadCard
-            username="uehara1414"
-            text="こんにちは" />
-          <ThreadCard
-            username="issac"
-            text="さようなら" />
-        </ScrollView>
+          {thread_cards}
 
-        <TouchableOpacity
-          onPress={() => alert("pressed")}
-          style={styles.delete_button}>
-          <Image
-            source={require('../assets/delete_button.png')}
-            resizeMode='contain'
-            style={styles.delete_button__icon} />
-        </TouchableOpacity>
+          <TouchableOpacity
+            onPress={() => alert("pressed")}
+            style={styles.delete_button}>
+            <Text style={styles.delete_button__text}>このリクエストを削除</Text>
+          </TouchableOpacity>
+        </ScrollView>
       </View>
     );
   }
@@ -89,11 +88,10 @@ const styles = StyleSheet.create({
     height: 20,
   },
   delete_button: {
-    position: "absolute",
-    top: 0,
-    right: 0,
+    marginTop: 50,
   },
-  delete_button__icon: {
-    backgroundColor: "#000",
+  delete_button__text: {
+    color: "#f00",
+    textAlign: "center"
   },
 });

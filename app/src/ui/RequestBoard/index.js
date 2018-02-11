@@ -8,11 +8,14 @@ class RequestCard extends React.Component {
   render() {
     return (
       <TouchableOpacity
-        onPress={() => boundActionCreator(types.NAVIGATOR_PUSH, {scine_id: 'ThreadsView'})}
-        style={[styles.request_card, this.props.is_active ? styles.request_card__is_active : null]}>
+        onPress={() => {
+          boundActionCreator(types.NAVIGATOR_PUSH, {scine_id: this.props.is_own ? 'ThreadsView' : 'ConfirmRequestView'});
+          boundActionCreator(types.SET_ACTIVE_REQUEST, {request_id: this.props.id});
+        }}
+        style={[styles.request_card, this.props.is_own ? styles.request_card__is_active : null]}>
         <Text style={styles.request_card__title}>{this.props.title}</Text>
-        <Text style={styles.request_card__text}>user : {this.props.user}</Text>
-        <Text style={styles.request_card__text}>reward : {this.props.reward}</Text>
+        <Text style={styles.request_card__text}>ユーザー : {this.props.user}</Text>
+        <Text style={styles.request_card__text}>報酬 : {this.props.reward ===  null ? 'なし' : this.props.reward}</Text>
         <View style={styles.request_card__badge_container}>
           <Text style={styles.request_card__badge}>{this.props.badge}</Text>
           <Image
@@ -27,21 +30,22 @@ class RequestCard extends React.Component {
 
 class RequestBoard extends React.Component {
   render() {
+    const state = this.props.state;
+    const request_cards = state.application.requests.map(x => 
+      <RequestCard
+        id={x.id}
+        title={x.title}
+        user={x.username}
+        reward={x.reward}
+        badge={x.accepted_users.length}
+        is_own={x.username === state.application.user.username}
+        key={x.id} />
+    );
+
     return (
       <View style={styles.root}>
         <ScrollView style={styles.request_cards}>
-          <RequestCard
-            title="hogehoge"
-            user="uehara1414"
-            reward="none"
-            badge={2}
-            is_active={true} />
-          <RequestCard
-            title="金"
-            user="sititou70"
-            reward="感謝"
-            badge={150}
-            is_active={false} />
+          {request_cards}
         </ScrollView>
 
         <TouchableOpacity

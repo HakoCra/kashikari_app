@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { StyleSheet, Text, View, TouchableOpacity, TextInput } from 'react-native';
+import { StyleSheet, Text, View, TouchableOpacity } from 'react-native';
 import boundActionCreator from '../boundActionCreator';
 import * as types from '../../application/types';
 
@@ -15,9 +15,24 @@ class ConfirmRequestView extends React.Component {
 
   render() {
     const state = this.props.state;
+    const request = state.application.requests.find(x => x.id === state.application.active_request_id);
 
     return (
-      <Text>ConfirmRequestView</Text>
+      <View style={styles.root}>
+        <Text style={styles.header}>ユーザー</Text>
+        <Text style={styles.text}>{request.username}</Text>
+        <Text style={styles.header}>リクエスト</Text>
+        <Text style={styles.text}>{request.title}</Text>
+        <Text style={styles.header}>報酬</Text>
+        <Text style={styles.text}>{request.reward === null ? 'なし' : request.reward}</Text>
+        <Text style={styles.header}>コメント</Text>
+        <Text style={styles.text}>{request.comment === null ? 'なし' : request.comment}</Text>
+        <TouchableOpacity
+          onPress={() => boundActionCreator(types.NAVIGATOR_PUSH, {scine_id: 'ChatView'})}
+          style={styles.button}>
+          <Text style={styles.button_text}>承認</Text>
+        </TouchableOpacity>
+      </View>
     );
   }
 }
@@ -27,43 +42,23 @@ export default connect(state => ({state}))(ConfirmRequestView);
 const styles = StyleSheet.create({
   root: {
     flex: 1,
-    position: "absolute",
-    top: 0,
-    bottom: 0,
-    left: 0,
-    right: 0,
-    paddingLeft: 30,
-    paddingRight: 30,
-    backgroundColor: '#ff562f'
+    padding: 30,
   },
-  label: {
-    marginTop: 70,
-    color: "rgba(255, 255, 255, 0.7)",
-    borderBottomColor: '#fff',
-    borderBottomWidth: 5,
-  },
-  text_input: {
-    height: 30,
-    borderBottomColor: '#fff',
-    borderBottomWidth: 5,
-    color: "#fff"
-  },
-  input_container: {
-    borderBottomColor: '#fff',
-    borderBottomWidth: 1,
-  },
-  text:{
+  header: {
     marginTop: 30,
-    color: "#fff",
-    textAlign: "center",
-    fontSize: 15
+  },
+  text: {
+    marginTop: 10,
+    fontSize: 30,
   },
   button: {
-    color: "#fff",
-    textAlign: "center",
-    fontSize: 20,
-  },
-  button_container: {
+    flex: 1,
     marginTop: 50,
+
+  },
+  button_text: {
+    fontSize: 25,
+    textAlign: "center",
+    color: "#007fff"
   }
 });

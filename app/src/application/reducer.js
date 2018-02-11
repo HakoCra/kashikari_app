@@ -34,6 +34,11 @@ const reducers = {
     state.messages = action.messages;
     return state;
   },
+  [types.SET_ACTIVE_REQUEST](old_state, action){
+    let state = assignDeep({}, old_state);
+    state.active_request_id = action.request_id;
+    return state;
+  },
 };
 
 const reducer = (state = initial_state, action) => {

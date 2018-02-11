@@ -32,7 +32,7 @@ const login = (user, state) => {
           }
         });
         BeaconEmitter.setBroadcast(res.beacon.major, res.beacon.minor);
-        //boundActionCreator(infra_types.FETCH_CLOCK, {}); // todo: remove
+        setInterval(() => boundActionCreator(infra_types.FETCH_CLOCK, {}), 1000 * 3);
       }else{
         boundActionCreator(infra_types.SET_LOGIN_AVAILABLE, {available: false});
         boundActionCreator(infra_types.SET_LOGIN_FAILED, {failed: true});

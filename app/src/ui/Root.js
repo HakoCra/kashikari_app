@@ -34,7 +34,7 @@ class Root extends React.Component {
             getTitle={state => '助っ人一覧'} />
           <ConfirmRequestView
             id='ConfirmRequestView'
-            getTitle={() => ''} />
+            getTitle={() => 'リクエストを承認しますか？'} />
           <ChatView
             id='ChatView'
             getTitle={() => ''} />
@@ -43,8 +43,6 @@ class Root extends React.Component {
             getTitle={() => 'リクエストを作成'} />
         </Navigator>
         <LoginView />
-        <Text>state.application.requests: {JSON.stringify(state.application.requests)}</Text>
-        <Text>state.application.messages: {JSON.stringify(state.application.messages)}</Text>
       </View>
     );
   }

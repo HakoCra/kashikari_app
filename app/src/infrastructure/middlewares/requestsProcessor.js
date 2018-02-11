@@ -50,7 +50,7 @@ const fetchMessages = (user, state) => {
     .then(res => {
       if(res.error !== 'Authorization error'){
 
-        boundActionCreator(app_types.SET_REQUESTS, {
+        boundActionCreator(app_types.SET_MESSAGES, {
           messages: messages
         });
 

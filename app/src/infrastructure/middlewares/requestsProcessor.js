@@ -51,7 +51,7 @@ const fetchMessages = (user, state) => {
       if(res.error !== 'Authorization error'){
 
         boundActionCreator(app_types.SET_MESSAGES, {
-          messages: messages
+          messages: res
         });
 
       }else{

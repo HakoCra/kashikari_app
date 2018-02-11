@@ -6,6 +6,7 @@ const login = (user, state) => {
   if(user.username === undefined || user.password === undefined)return;
 
   boundActionCreator(infra_types.SET_LOGIN_FAILED, {failed: false});
+  boundActionCreator(infra_types.SET_LOGGING_IN, {logging_in: true});
 
   const api_server = state.infrastructure.api_server;
   fetch(`${api_server}/login`, {
@@ -18,6 +19,8 @@ const login = (user, state) => {
   })
     .then(res => res.json())
     .then(res => {
+      boundActionCreator(infra_types.SET_LOGGING_IN, {logging_in: false});
+      
       if(res.error !== 'Authorization error'){
         boundActionCreator(infra_types.SET_LOGIN_AVAILABLE, {available: true});
         boundActionCreator(app_types.SET_USER, {

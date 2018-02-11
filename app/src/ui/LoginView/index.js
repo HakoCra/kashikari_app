@@ -39,7 +39,8 @@ class LoginView extends React.Component {
             />
           </View>
 
-          {state.infrastructure.login_failed ? <Text style={styles.error_text}>パスワードが違います</Text> : null}
+          {state.infrastructure.logging_in ? <Text style={[styles.text]}>ログイン中です…</Text> : null}
+          {state.infrastructure.login_failed ? <Text style={[styles.text, styles.error]}>パスワードが違います</Text> : null}
 
           <TouchableOpacity
             onPress={() => boundActionCreator(types.SET_USER, {
@@ -83,11 +84,14 @@ const styles = StyleSheet.create({
     borderBottomColor: '#fff',
     borderBottomWidth: 1,
   },
-  error_text:{
+  text:{
     marginTop: 30,
-    color: "#f00",
+    color: "#fff",
     textAlign: "center",
     fontSize: 15
+  },
+  error:{
+    color: "#f00",
   },
   button: {
     color: "#fff",

@@ -23,6 +23,11 @@ const reducers = {
     state.login_available = action.available
     return state;
   },
+  [types.SET_LOGGING_IN](old_state, action){
+    let state = assignDeep({}, old_state);
+    state.logging_in = action.logging_in;
+    return state;
+  },
   [types.SET_LOGIN_FAILED](old_state, action){
     let state = assignDeep({}, old_state);
     state.login_failed = action.failed

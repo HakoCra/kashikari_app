@@ -33,6 +33,14 @@ const reducers = {
     state.login_failed = action.failed
     return state;
   },
+  [types.FETCH_CLOCK](old_state, action){
+    let state = assignDeep({}, old_state);
+    return state;
+  },
+  [types.ACCEPT_REQUESTS](old_state, action){
+    let state = assignDeep({}, old_state);
+    return state;
+  },
 };
 
 const reducer = (state = initial_state, action) => {

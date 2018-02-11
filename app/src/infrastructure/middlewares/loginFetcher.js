@@ -5,6 +5,7 @@ import BeaconEmitter from '../BeaconEmitter';
 
 const login = (user, state) => {
   if(user.username === undefined || user.password === undefined)return;
+  console.log(user.username === '');
   boundActionCreator(infra_types.SET_LOGIN_FAILED, {failed: false});
   boundActionCreator(infra_types.SET_LOGGING_IN, {logging_in: true});
 
@@ -30,8 +31,8 @@ const login = (user, state) => {
             minor: res.beacon.minor
           }
         });
-
         BeaconEmitter.setBroadcast(res.beacon.major, res.beacon.minor);
+        //boundActionCreator(infra_types.FETCH_CLOCK, {}); // todo: remove
       }else{
         boundActionCreator(infra_types.SET_LOGIN_AVAILABLE, {available: false});
         boundActionCreator(infra_types.SET_LOGIN_FAILED, {failed: true});

@@ -10,6 +10,7 @@ const STORE_KEY = 'APPLICATION_STATE';
 
 const saveSettings = state => {
   AsyncStorage.setItem(STORE_KEY, JSON.stringify(state.application));
+  // AsyncStorage.setItem(STORE_KEY, "");
 };
 
 const loadSettings = () => {

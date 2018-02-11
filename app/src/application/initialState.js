@@ -1,6 +1,7 @@
 const initial_state = {
   navigator_stack: ["RequestBoard"],
   active_request_id: null,
+  active_username: "",
   user: {
     token: "",
     major: null,

@@ -28,7 +28,10 @@ class ConfirmRequestView extends React.Component {
         <Text style={styles.header}>コメント</Text>
         <Text style={styles.text}>{request.comment === null ? 'なし' : request.comment}</Text>
         <TouchableOpacity
-          onPress={() => boundActionCreator(types.NAVIGATOR_PUSH, {scine_id: 'ChatView'})}
+          onPress={() => {
+            boundActionCreator(types.NAVIGATOR_PUSH, {scine_id: 'ChatView'});
+            boundActionCreator(types.SET_ACTIVE_USERNAME, {username: request.username});
+          }}
           style={styles.button}>
           <Text style={styles.button_text}>承認</Text>
         </TouchableOpacity>

@@ -39,6 +39,12 @@ const reducers = {
     state.active_request_id = action.request_id;
     return state;
   },
+  [types.SET_ACTIVE_USERNAME](old_state, action){
+    let state = assignDeep({}, old_state);
+    console.log(action.username);
+    state.active_username = action.username;
+    return state;
+  },
 };
 
 const reducer = (state = initial_state, action) => {

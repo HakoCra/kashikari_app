@@ -4,13 +4,46 @@ import { StyleSheet, Text, View, TouchableOpacity, TextInput } from 'react-nativ
 import boundActionCreator from '../boundActionCreator';
 import * as types from '../../application/types';
 
-class ChatView extends React.Component {
-  render() {
-    const state = this.props.state;
+import { GiftedChat } from 'react-native-gifted-chat'
 
+class ChatView extends React.Component {
+  state = {
+    messages: [],
+  }
+
+  componentWillMount() {
+    this.setState({
+      messages: [
+        {
+          _id: 1,
+          text: 'Hello developer',
+          createdAt: new Date(),
+          user: {
+            _id: 2,
+            name: 'React Native',
+            avatar: 'https://facebook.github.io/react/img/logo_og.png',
+          },
+        },
+      ],
+    })
+  }
+
+  onSend(messages = []) {
+    this.setState(previousState => ({
+      messages: GiftedChat.append(previousState.messages, messages),
+    }))
+  }
+
+  render() {
     return (
-      <Text>chat view</Text>
-    );
+      <GiftedChat
+        messages={this.state.messages}
+        onSend={messages => this.onSend(messages)}
+        user={{
+          _id: 1,
+        }}
+      />
+    )
   }
 }
 
@@ -28,34 +61,4 @@ const styles = StyleSheet.create({
     paddingRight: 30,
     backgroundColor: '#ff562f'
   },
-  label: {
-    marginTop: 70,
-    color: "rgba(255, 255, 255, 0.7)",
-    borderBottomColor: '#fff',
-    borderBottomWidth: 5,
-  },
-  text_input: {
-    height: 30,
-    borderBottomColor: '#fff',
-    borderBottomWidth: 5,
-    color: "#fff"
-  },
-  input_container: {
-    borderBottomColor: '#fff',
-    borderBottomWidth: 1,
-  },
-  text:{
-    marginTop: 30,
-    color: "#fff",
-    textAlign: "center",
-    fontSize: 15
-  },
-  button: {
-    color: "#fff",
-    textAlign: "center",
-    fontSize: 20,
-  },
-  button_container: {
-    marginTop: 50,
-  }
 });

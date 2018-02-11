@@ -9,7 +9,10 @@ class ThreadCard extends React.Component {
   render() {
     return (
       <TouchableOpacity
-        onPress={() => boundActionCreator(types.NAVIGATOR_PUSH, {scine_id: 'ChatView'})}
+        onPress={() => {
+          boundActionCreator(app_types.NAVIGATOR_PUSH, {scine_id: 'ChatView'});
+          boundActionCreator(app_types.SET_ACTIVE_USERNAME, {username: this.props.username});
+        }}
         style={styles.thread_card}>
         <Text style={styles.thread_card__username}>{this.props.username}</Text>
         <Text style={styles.thread_card__text}>{this.props.text}</Text>

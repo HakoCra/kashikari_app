@@ -37,7 +37,7 @@ class Root extends React.Component {
             getTitle={() => 'リクエストを承認しますか？'} />
           <ChatView
             id='ChatView'
-            getTitle={() => ''} />
+            getTitle={state => state.application.active_username} />
           <AddRequestView
             id='AddRequestView'
             getTitle={() => 'リクエストを作成'} />

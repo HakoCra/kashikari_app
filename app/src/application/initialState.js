@@ -5,7 +5,8 @@ const initial_state = {
     token: "",
     major: null,
     minor: null
-  }
+  },
+  messages: []
 };
 
 export default initial_state;

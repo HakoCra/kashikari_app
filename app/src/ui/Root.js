@@ -44,6 +44,7 @@ class Root extends React.Component {
         </Navigator>
         <LoginView />
         <Text>state.application.requests: {JSON.stringify(state.application.requests)}</Text>
+        <Text>state.application.messages: {JSON.stringify(state.application.messages)}</Text>
       </View>
     );
   }

@@ -19,6 +19,11 @@ const reducers = {
     state.requests = action.requests;
     return state;
   },
+  [types.SET_MESSAGES](old_state, action){
+    let state = assignDeep({}, old_state);
+    state.messages = action.messages;
+    return state;
+  }
 };
 
 const reducer = (state = initial_state, action) => {

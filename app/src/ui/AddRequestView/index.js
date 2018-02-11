@@ -2,7 +2,8 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { StyleSheet, Text, View, TouchableOpacity, TextInput } from 'react-native';
 import boundActionCreator from '../boundActionCreator';
-import * as types from '../../application/types';
+import * as app_types from '../../application/types';
+import * as infra_types from '../../infrastructure/types';
 
 class AddRequestView extends React.Component {
   constructor(props){
@@ -45,14 +46,14 @@ class AddRequestView extends React.Component {
 
         <TouchableOpacity
           onPress={() => {
-            /*boundActionCreator(types.ADD_REQUEST, {
-              user: {
+            boundActionCreator(infra_types.POST_REQUEST, {
+              request: {
                 title: this.state.title,
                 reward: this.state.reward,
                 comment: this.state.comment
               }
-            });*/
-            boundActionCreator(types.NAVIGATOR_POP);
+            });
+            boundActionCreator(app_types.NAVIGATOR_POP);
           }}
           style={styles.button_container}
         >

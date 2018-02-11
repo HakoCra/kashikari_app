@@ -4,6 +4,7 @@ import { StyleSheet, Text, View, TouchableOpacity, Image } from 'react-native';
 import boundActionCreator from '../boundActionCreator';
 import * as types from '../../application/types';
 
+
 class Navigator extends React.Component {
   constructor(props){
     super(props);
@@ -17,7 +18,6 @@ class Navigator extends React.Component {
     const state = this.props.state;
     const scine_id = state.application.navigator_stack[state.application.navigator_stack.length - 1];
     const scine = this.props.children.find(x => x.props.id === scine_id);
-    console.log(scine);
 
     return (
       <View style={styles.root}>
@@ -26,7 +26,7 @@ class Navigator extends React.Component {
         </View>
 
         <View style={styles.header}>
-          {state.application.navigator_stack.length !== 1 ? 
+          {state.application.navigator_stack.length !== 1 ?
             <TouchableOpacity
               style={styles.back_button}
               onPress={() => boundActionCreator(types.NAVIGATOR_POP)}>

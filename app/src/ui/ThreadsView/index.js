@@ -26,6 +26,7 @@ class ThreadCard extends React.Component {
 class ThreadsView extends React.Component {
   render() {
     const state = this.props.state;
+    console.log(state);
     const thread_cards = state.application.messages.map(x => 
       <ThreadCard
         username="uehara1414"
@@ -36,6 +37,7 @@ class ThreadsView extends React.Component {
       <View style={styles.root}>
         <ScrollView style={styles.thread_cards}>
           {thread_cards}
+          {thread_cards.length === 0 ? <Text style={styles.text}>まだ助っ人がいません</Text> : null}
 
           <TouchableOpacity
             onPress={() => alert("pressed")}
@@ -94,4 +96,8 @@ const styles = StyleSheet.create({
     color: "#f00",
     textAlign: "center"
   },
+  text: {
+    marginTop: 30,
+    textAlign: "center",
+  }
 });

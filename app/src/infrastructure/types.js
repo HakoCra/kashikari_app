@@ -7,3 +7,4 @@ export const SET_LOGIN_FAILED = 'SET_LOGIN_FAILED';
 // 定期的な実行
 export const FETCH_CLOCK = 'FETCH_CLOCK';
 export const ACCEPT_REQUESTS = 'ACCEPT_REQUESTS';
+export const POST_REQUEST = 'POST_REQUEST';

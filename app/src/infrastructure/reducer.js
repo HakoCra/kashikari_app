@@ -41,6 +41,10 @@ const reducers = {
     let state = assignDeep({}, old_state);
     return state;
   },
+  [types.POST_REQUEST](old_state, action){
+    let state = assignDeep({}, old_state);
+    return state;
+  },
 };
 
 const reducer = (state = initial_state, action) => {

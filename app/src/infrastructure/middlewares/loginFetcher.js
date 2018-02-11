@@ -5,7 +5,6 @@ import BeaconEmitter from '../BeaconEmitter';
 
 const login = (user, state) => {
   if(user.username === undefined || user.password === undefined)return;
-  console.log(user.username === '');
   boundActionCreator(infra_types.SET_LOGIN_FAILED, {failed: false});
   boundActionCreator(infra_types.SET_LOGGING_IN, {logging_in: true});
 
@@ -21,7 +20,7 @@ const login = (user, state) => {
     .then(res => res.json())
     .then(res => {
       boundActionCreator(infra_types.SET_LOGGING_IN, {logging_in: false});
-      
+
       if(res.error === undefined){
         boundActionCreator(infra_types.SET_LOGIN_AVAILABLE, {available: true});
         boundActionCreator(app_types.SET_USER, {
@@ -32,7 +31,8 @@ const login = (user, state) => {
           }
         });
         BeaconEmitter.setBroadcast(res.beacon.major, res.beacon.minor);
-        //boundActionCreator(infra_types.FETCH_CLOCK, {}); // todo: remove
+        // boundActionCreator(infra_types.FETCH_CLOCK, {}); // todo: remove
+        // boundActionCreator(infra_types.POST_REQUEST, {request: {"title": "〜〜ほしい", "timelimit": "3.2", "reward": "煎餅", "comment": "なるはやで"}});
       }else{
         boundActionCreator(infra_types.SET_LOGIN_AVAILABLE, {available: false});
         boundActionCreator(infra_types.SET_LOGIN_FAILED, {failed: true});

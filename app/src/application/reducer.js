@@ -1,7 +1,6 @@
 import initial_state from './initialState';
 import * as types from './types';
 import assignDeep from 'assign-deep';
-import BeaconEmitter from '../infrastructure/BeaconEmitter';
 
 const reducers = {
   [types.INIT_STATE](old_state, action){
@@ -12,10 +11,17 @@ const reducers = {
   [types.SET_USER](old_state, action){
     let state = assignDeep({}, old_state);
     state.user = assignDeep({}, state.user, action.user);
-
-    if(action.user.major !== undefined && action.user.minor !== undefined){
-      BeaconEmitter.setBroadcast(action.user.major, action.user.minor);
-    }
+    return state;
+  },
+  [types.NAVIGATOR_PUSH](old_state, action){
+    let state = assignDeep({}, old_state);
+    state.navigator_stack.push(action.scine_id);
+    return state;
+  },
+  [types.NAVIGATOR_POP](old_state, action){
+    let state = assignDeep({}, old_state);
+    if(state.navigator_stack.length === 1)return state;
+    state.navigator_stack.pop();
     return state;
   },
 };

@@ -70,7 +70,7 @@ const styles = StyleSheet.create({
     right: 0,
     paddingLeft: 30,
     paddingRight: 30,
-    backgroundColor: '#ff562f'
+    backgroundColor: '#ff9d27'
   },
   label: {
     marginTop: 70,

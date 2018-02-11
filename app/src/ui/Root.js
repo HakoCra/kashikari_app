@@ -24,23 +24,23 @@ class Root extends React.Component {
 
     return (
       <View style={styles.root}>
-        {true ? <Text>{JSON.stringify(state.infrastructure.beacons)}</Text> : null}
+        {false ? <Text>{JSON.stringify(state.infrastructure.beacons)}</Text> : null}
         <Navigator>
           <RequestBoard
-            id={'RequestBoard'}
-            title={'リクエスト一覧'} />
+            id='RequestBoard'
+            title='リクエスト一覧' />
           <ThreadsView
-            id={'ThreadsView'}
-            title={''} />
+            id='ThreadsView'
+            title='助っ人一覧' />
           <ConfirmRequestView
-            id={'ConfirmRequestView'}
-            title={'リクエスト一覧'} />
+            id='ConfirmRequestView'
+            title='' />
           <ChatView
-            id={'ChatView'}
-            title={'リクエスト一覧'} />
+            id='ChatView'
+            title='' />
           <AddRequestView
-            id={'AddRequestView'}
-            title={'リクエスト一覧'} />
+            id='AddRequestView'
+            title='リクエストを追加' />
         </Navigator>
         <LoginView />
       </View>

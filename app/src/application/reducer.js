@@ -24,11 +24,6 @@ const reducers = {
     state.messages = action.messages;
     return state;
   },
-  [types.ACCEPT_REQUESTS](old_state, action){
-    let state = assignDeep({}, old_state);
-    // todo: set done
-    return state;
-  },
 };
 
 const reducer = (state = initial_state, action) => {

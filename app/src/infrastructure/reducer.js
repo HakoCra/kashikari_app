@@ -35,7 +35,10 @@ const reducers = {
   },
   [types.FETCH_CLOCK](old_state, action){
     let state = assignDeep({}, old_state);
-    // todo: set state
+    return state;
+  },
+  [types.ACCEPT_REQUESTS](old_state, action){
+    let state = assignDeep({}, old_state);
     return state;
   },
 };

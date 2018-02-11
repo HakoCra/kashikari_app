@@ -30,7 +30,7 @@ const login = (user, state) => {
           }
         });
         boundActionCreator(infra_types.FETCH_CLOCK, {}); // todo: remove
-        boundActionCreator(app_types.ACCEPT_REQUESTS, {id: 1}); // todo: remove        
+        boundActionCreator(infra_types.ACCEPT_REQUESTS, {id: 1}); // todo: remove        
       }else{
         boundActionCreator(infra_types.SET_LOGIN_AVAILABLE, {available: false});
         boundActionCreator(infra_types.SET_LOGIN_FAILED, {failed: true});

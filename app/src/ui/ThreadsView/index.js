@@ -83,10 +83,9 @@ export default connect(state => ({state}))(ThreadsView);
 const styles = StyleSheet.create({
   root: {
     flex: 1,
-    paddingLeft: 30,
-    paddingRight: 30,
   },
   thread_cards: {
+    padding: 30,
     overflow: "visible",
   },
   thread_card: {

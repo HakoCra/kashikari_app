@@ -11,3 +11,4 @@ export const ACCEPT_REQUESTS = 'ACCEPT_REQUESTS';
 // 逐次的な実行
 export const POST_REQUEST = 'POST_REQUEST';
 export const DELETE_REQUEST = 'DELETE_REQUEST';
+export const POST_MESSAGE = 'POST_MESSAGE';

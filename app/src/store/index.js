@@ -5,6 +5,7 @@ import infrastructure from '../infrastructure/reducer';
 import loginFetcher from '../infrastructure/middlewares/loginFetcher';
 import requestsProcessor from '../infrastructure/middlewares/requestsProcessor';
 import postRequest from '../infrastructure/middlewares/postRequest';
+import postMessage from '../infrastructure/middlewares/postMessage';
 import deleteRequest from '../infrastructure/middlewares/deleteRequest';
 import acceptRequest from '../infrastructure/middlewares/acceptRequest';
 import storeSetter from '../infrastructure/middlewares/storeSetter';
@@ -18,6 +19,7 @@ const store = createStore(combineReducers({
   loginFetcher,
   requestsProcessor,
   postRequest,
+  postMessage,
   deleteRequest,
   acceptRequest,
   storeSetter

@@ -68,11 +68,9 @@ const add_button_size = 50;
 const styles = StyleSheet.create({
   root: {
     flex: 1,
-    paddingLeft: 30,
-    paddingRight: 30
   },
   request_cards: {
-    paddingTop: 30,
+    padding: 30,
     overflow: "visible",
   },
   request_card: {

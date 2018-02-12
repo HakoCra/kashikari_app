@@ -2,7 +2,8 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { StyleSheet, Text, View, TouchableOpacity } from 'react-native';
 import boundActionCreator from '../boundActionCreator';
-import * as types from '../../application/types';
+import * as app_types from '../../application/types';
+import * as infra_types from '../../infrastructure/types';
 
 class ConfirmRequestView extends React.Component {
   constructor(props){
@@ -29,8 +30,9 @@ class ConfirmRequestView extends React.Component {
         <Text style={styles.text}>{request.comment === null ? 'なし' : request.comment}</Text>
         <TouchableOpacity
           onPress={() => {
-            boundActionCreator(types.NAVIGATOR_PUSH, {scine_id: 'ChatView'});
-            boundActionCreator(types.SET_ACTIVE_USERNAME, {username: request.username});
+            boundActionCreator(app_types.NAVIGATOR_PUSH, {scine_id: 'ChatView'});
+            boundActionCreator(app_types.SET_ACTIVE_USERNAME, {username: request.username});
+            boundActionCreator(infra_types.ACCEPT_REQUESTS, {id: request.id});
           }}
           style={styles.button}>
           <Text style={styles.button_text}>承認</Text>

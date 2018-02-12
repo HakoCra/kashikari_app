@@ -31,7 +31,7 @@ class RequestCard extends React.Component {
 class RequestBoard extends React.Component {
   render() {
     const state = this.props.state;
-    const request_cards = state.application.requests.map(x => 
+    const request_cards = state.application.requests.sort((x1, x2) => x2.id - x1.id).map(x =>
       <RequestCard
         id={x.id}
         title={x.title}

@@ -18,7 +18,7 @@ class ChatView extends React.Component {
         return {
           _id: obj.id,
           text: obj.text,
-          createdAt: new Date(),
+          createdAt: Date.parse(obj.created_at),
           user: {
             _id: obj.target.username === nextProps.state.application.active_username ? 1:2,
             name: obj.username
